@@ -24,8 +24,8 @@ const ImageContainer = styled("img", {
   slot: "Wrapper",
   name: "ImageContainer",
 })(({ theme }) => ({
-  width: "max(225px,225px)",
-  height: "max(225px,225px)",
+  width: "max(350px,350px)",
+  height: "max(350px,350px)",
   display: "inline-block",
   position: "relative",
   color: theme.palette.secondary.light,
@@ -36,6 +36,10 @@ const ImageContainer = styled("img", {
 
   justifySelf: "center",
   opacity: "0",
+  "@media(max-width:1000px)": {
+    width: "max(250px,250px)",
+    height: "max(250px,250px)",
+  },
   "@media(max-width:820px)": {
     width: "max(150px,150px)",
     height: "max(150px,150px)",
