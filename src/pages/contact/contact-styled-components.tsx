@@ -36,6 +36,9 @@ const TextContainer = styled("div", {
   gap: "20px",
 
   alignSelf: "center",
+  "@media(max-width:820px)": {
+    fontSize: "1.2rem",
+  },
 }));
 
 const StyledTypography = styled(Typography, {
@@ -54,7 +57,7 @@ const IconsContainer = styled("div", {
   name: "IconContainer",
 })(({ theme }) => ({
   width: "max(100%,100%)",
-  height: "60px",
+  height: "max(50px,50px)",
   color: theme.palette.secondary.dark,
   transition: "all 1s",
   textDecoration: "underline",
@@ -62,6 +65,11 @@ const IconsContainer = styled("div", {
   gridTemplateColumns: "repeat(2,60px)",
   justifyContent: "center",
   gap: "30px",
+  "@media(max-width:1500px)": {
+    height: "max(30px,30px)",
+    gridTemplateColumns: "repeat(2,30px)",
+    gap: "15px",
+  },
 }));
 
 const StyledLink = styled("a", {
@@ -78,6 +86,22 @@ const StyledLink = styled("a", {
     color: "red",
   },
 }));
+const StyledSubTitleTypography = styled(Typography, {
+  slot: "Wrapper",
+  name: "StyledTypography",
+})(({ theme }) => ({
+  width: "max(100%,100%)",
+  height: "max(max-content,max-content)",
+  color: theme.palette.secondary.dark,
+  fontSize: "3.2rem",
+  textAlign: "center",
+  "@media(max-width:1500px)": {
+    fontSize: "2.2rem",
+  },
+  "@media(max-width:820px)": {
+    fontSize: "1.8rem",
+  },
+}));
 
 export {
   MainContainer,
@@ -85,4 +109,5 @@ export {
   StyledTypography,
   IconsContainer,
   StyledLink,
+  StyledSubTitleTypography,
 };

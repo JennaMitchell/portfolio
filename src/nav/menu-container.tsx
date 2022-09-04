@@ -10,21 +10,28 @@ interface Props {
 }
 const MenuContainer = ({ menuButtonHandler, menuButtonActive }: Props) => {
   const aboutMeHandler = () => {
-    document.getElementById("AboutMe")?.scrollIntoView;
+    document.getElementById("AboutMe")?.scrollIntoView();
   };
   const projectsHandler = () => {
-    document.getElementById("Projects")?.scrollIntoView;
+    document.getElementById("Projects")?.scrollIntoView();
   };
   const contactHandler = () => {
-    document.getElementById("Contact")?.scrollIntoView;
+    document.getElementById("Contact")?.scrollIntoView();
   };
 
   return (
-    <MainContainer sx={{ right: `${menuButtonActive ? "0px" : "-400px"}` }}>
+    <MainContainer
+      sx={{
+        right: `${menuButtonActive ? "0px" : "-400px"}`,
+        "@media(max-width:400px)": {
+          right: `${menuButtonActive ? "0px" : "-400px"}`,
+        },
+      }}
+    >
       <ClosingIcon onClick={menuButtonHandler} />
-      <ButtonLink>About Me</ButtonLink>
-      <ButtonLink>Projects</ButtonLink>
-      <ButtonLink>Contact</ButtonLink>
+      <ButtonLink onClick={aboutMeHandler}>About Me</ButtonLink>
+      <ButtonLink onClick={projectsHandler}>Projects</ButtonLink>
+      <ButtonLink onClick={contactHandler}>Contact</ButtonLink>
     </MainContainer>
   );
 };

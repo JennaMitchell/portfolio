@@ -21,6 +21,10 @@ const MainContainer = styled("div", {
   transition: "all 1s",
 
   gap: "40px",
+  "@media(max-width:400px)": {
+    width: "max(100vw,100vw)",
+    right: "-100vw",
+  },
 }));
 
 const ButtonLink = styled("button", {
@@ -33,7 +37,11 @@ const ButtonLink = styled("button", {
   color: theme.palette.secondary.dark,
   fontSize: "2.6rem",
   textDecoration: "none",
+  border: "none",
   borderBottom: "1px solid grey",
+  backgroundColor: "transparent",
+  textAlign: "start",
+
   display: "inline-block",
   transition: "all 1s",
   ":hover": {

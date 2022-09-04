@@ -5,9 +5,9 @@ import Homepage from "./pages/homepage/homepage";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#b21e35",
-      light: "#e01e37",
-      dark: "#641220",
+      main: "rgb(255, 0, 0)",
+      light: "rgb(253, 102, 102)",
+      dark: "rgb(175, 3, 3)",
     },
     secondary: {
       main: "#616161",
@@ -23,8 +23,11 @@ const theme = createTheme({
 });
 
 function App() {
+  const scrollHandler = (e: any) => {
+    console.log(e);
+  };
   return (
-    <div className="App">
+    <div className="App" onScroll={scrollHandler}>
       <ThemeProvider theme={theme}>
         <Homepage />
       </ThemeProvider>

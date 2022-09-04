@@ -11,10 +11,10 @@ const MainContainer = styled("div", {
   position: "relative",
   backgroundImage: `url(${spaceImage})`,
   backgroundSize: "cover",
-  backgroundPosition: "no-repeat",
+  backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   margin: "0",
-  overflowY: "scroll",
+
   overflowX: "hidden",
   display: "flex",
   flexDirection: "column",
@@ -63,6 +63,11 @@ const MenuButton = styled(Button, {
   "&:hover": {
     border: "4px solid white",
   },
+  "@media(max-width:640px)": {
+    fontSize: "1.2rem",
+    top: "20px",
+    right: "10px",
+  },
 }));
 
 const TitleText = styled(Typography, {
@@ -77,12 +82,26 @@ const TitleText = styled(Typography, {
   maxHeight: "max-content",
   padding: "5px 20px",
   position: "relative",
+  marginRight: "12px",
 
   color: theme.palette.secondary.light,
   fontSize: "4.8rem",
   backgroundColor: "transparent",
   border: "4px solid white",
   transition: "all 1s",
+  opacity: "0",
+  "@media(max-width:820px)": {
+    fontSize: "4.2rem",
+  },
+  "@media(max-width:640px)": {
+    fontSize: "3.2rem",
+  },
+  "@media(max-width:480px)": {
+    fontSize: "2.4rem",
+  },
+  "@media(max-width:370px)": {
+    fontSize: "2.0rem",
+  },
 }));
 
 const MoveDownButton = styled("a", {
@@ -97,7 +116,6 @@ const MoveDownButton = styled("a", {
   color: "white",
   transition: "all 1s",
 
-  fontSize: "4.8rem",
   backgroundColor: "transparent",
   border: "4px solid white",
   justifySelf: "center",
@@ -105,6 +123,17 @@ const MoveDownButton = styled("a", {
   "&:hover": {
     border: "4px solid red",
     color: "red",
+  },
+  "@media(max-width:820px)": {
+    width: "max(40px,40px)",
+    height: "max(40px,40px)",
+  },
+  "@media(max-width:640px)": {
+    width: "max(30px,30px)",
+    height: "max(30px,30px)",
+  },
+  "@media(max-width:370px)": {
+    padding: "15px",
   },
 }));
 
@@ -123,13 +152,24 @@ const ContentContainer = styled("div", {
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
-
+  marginRight: "10px",
   padding: "40px",
   justifySelf: "center",
   alignItems: "center",
+  boxSizing: "border-box",
 
   marginBottom: "40px",
   gap: "30px",
+  "@media(max-width:1550px)": {
+    minWidth: "90vw",
+    width: "90vw",
+    maxWidth: "90vw",
+  },
+  "@media(max-width:500px)": {
+    padding: "10px",
+    marginLeft: "0px",
+    marginRight: "12.5px",
+  },
 }));
 
 const SectionTitle = styled(Typography, {
@@ -146,6 +186,12 @@ const SectionTitle = styled(Typography, {
   position: "relative",
   textAlign: "center",
   justifySelf: "center",
+  "@media(max-width:1500px)": {
+    fontSize: "4.8rem",
+  },
+  "@media(max-width:820px)": {
+    fontSize: "3.2rem",
+  },
 }));
 
 export {

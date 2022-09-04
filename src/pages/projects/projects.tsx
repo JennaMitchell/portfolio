@@ -7,6 +7,7 @@ import {
   ImageStackContainer,
   CustomTooltip,
   DownArrow,
+  StyledSubTitleTypography,
 } from "./projects-styled-components";
 
 import bar from "../../assets/images/bar.jpg";
@@ -44,9 +45,9 @@ const ProjectSection = () => {
   return (
     <MainContainer>
       <TextContainer>
-        <StyledTypography sx={{ fontSize: "3.2rem" }}>
+        <StyledSubTitleTypography>
           <b>{projectsData[activeProject].name}</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography sx={{ width: "87.5%" }}>
           {projectsData[activeProject].description}
         </StyledTypography>
@@ -65,8 +66,8 @@ const ProjectSection = () => {
       <ImageStackContainer>
         <ImageContainer
           sx={{
-            top: "10px",
-            right: "20px",
+            top: "-10px",
+            right: "2.5%",
             scale: `${activeProject === "redDragonPizzeria" && 1.25}`,
             zIndex: `${activeProject === "redDragonPizzeria" && 2}`,
             border: `${
@@ -74,6 +75,8 @@ const ProjectSection = () => {
             }`,
 
             backgroundImage: `url(${bar})`,
+            "@media(max-width:800px)": { right: "7.5%" },
+            "@media(max-width:700px)": { right: "2.5%" },
           }}
           onMouseEnter={redDragonPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}
@@ -91,8 +94,8 @@ const ProjectSection = () => {
 
         <ImageContainer
           sx={{
-            top: "140px",
-            right: "150px",
+            top: "120px",
+            right: "30%",
             backgroundImage: `url(${frenchText})`,
             scale: `${activeProject === "frenchQuiz" && 1.25}`,
             zIndex: `${activeProject === "frenchQuiz" && 2}`,
@@ -115,11 +118,13 @@ const ProjectSection = () => {
         <ImageContainer
           sx={{
             top: "10px",
-            left: "20px",
+            left: "2.5%",
             backgroundImage: `url(${kanji})`,
             scale: `${activeProject === "kanji2Go" && 1.25}`,
             zIndex: `${activeProject === "kanji2Go" && 2}`,
             border: `${activeProject === "kanji2Go" && "4px solid red"}`,
+            "@media(max-width:800px)": { left: "7.5%" },
+            "@media(max-width:700px)": { left: "2.5%" },
           }}
           onMouseEnter={kanji2GoPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}

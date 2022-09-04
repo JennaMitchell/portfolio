@@ -10,6 +10,15 @@ body {
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Medium.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: bold;
+  font-weight: 700;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Bold.ttf")
     format("truetype");
 }

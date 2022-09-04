@@ -2,6 +2,7 @@ import circuitBoard from "../../assets/images/electrical-board.jpg";
 import dungeonsDragons from "../../assets/images/dungeons-dragons.jpg";
 import code from "../../assets/images/coding.jpg";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "@mui/material";
 import {
   MainContainer,
   ImageContainer,
@@ -11,9 +12,21 @@ import {
   ActiveSectionButton,
   StyledUnorderedList,
   StyledListItem,
+  StyledSubTitleTypography,
+  StackedTitleTypography,
 } from "./about-me-styled-components";
 const AboutMeSection = () => {
-  const sectionButtons = ["Coding Experience", "Job Experience", "Fun Stuff"];
+  const sectionButtonTitles = [
+    "Coding Experience",
+    "Job Experience",
+    "Fun Stuff",
+  ];
+  const sectionStackedButtonTitles = [
+    ["Coding", "Experience"],
+    ["Job", "Experience"],
+    ["Fun", "Stuff"],
+  ];
+  const stackButtonsActive = useMediaQuery("(max-width:700px)");
   const [activeSectionButton, setActiveSectionButton] =
     useState("Coding Experience");
 
@@ -43,41 +56,78 @@ const AboutMeSection = () => {
     previousActiveButton.length,
   ]);
 
-  const renderReadySectionButtons = sectionButtons.map((title: string) => {
-    const buttonHandler = () => {
-      setNextActiveButton(title);
-      setFadeIn(false);
-    };
+  let renderReadySectionButtons: any[] = [];
+  if (!stackButtonsActive) {
+    renderReadySectionButtons = sectionButtonTitles.map((title: string) => {
+      const buttonHandler = () => {
+        setNextActiveButton(title);
+        setFadeIn(false);
+      };
 
-    if (title === activeSectionButton) {
-      return (
-        <ActiveSectionButton key={title}>
-          &nbsp; {title} &nbsp;
-        </ActiveSectionButton>
-      );
-    } else {
-      return (
-        <ActiveSectionButton
-          key={title}
-          sx={{
-            textDecoration: "none",
-            "&:hover": { textDecoration: "underline" },
-          }}
-          onClick={buttonHandler}
-        >
-          &nbsp;
-          {title}&nbsp;
-        </ActiveSectionButton>
-      );
-    }
-  });
+      if (title === activeSectionButton) {
+        return (
+          <ActiveSectionButton key={title}>
+            &nbsp; {title} &nbsp;
+          </ActiveSectionButton>
+        );
+      } else {
+        return (
+          <ActiveSectionButton
+            key={title}
+            sx={{
+              textDecoration: "none",
+              "&:hover": { textDecoration: "underline" },
+            }}
+            onClick={buttonHandler}
+          >
+            &nbsp;
+            {title}&nbsp;
+          </ActiveSectionButton>
+        );
+      }
+    });
+  } else {
+    renderReadySectionButtons = sectionStackedButtonTitles.map(
+      (word: string[], index: number) => {
+        const buttonHandler = () => {
+          setNextActiveButton(sectionButtonTitles[index]);
+          setFadeIn(false);
+        };
+        const renderReadyWordStack = word.map((word: string) => {
+          return (
+            <StackedTitleTypography>&nbsp;{word}&nbsp;</StackedTitleTypography>
+          );
+        });
+        if (sectionButtonTitles[index] === activeSectionButton) {
+          return (
+            <ActiveSectionButton key={sectionButtonTitles[index]}>
+              {renderReadyWordStack}
+            </ActiveSectionButton>
+          );
+        } else {
+          return (
+            <ActiveSectionButton
+              key={sectionButtonTitles[index]}
+              sx={{
+                textDecoration: "none",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={buttonHandler}
+            >
+              {renderReadyWordStack}
+            </ActiveSectionButton>
+          );
+        }
+      }
+    );
+  }
 
   const renderReadyCodingBlock = (
     <>
       <TextContainer sx={{ opacity: `${fadeIn ? "1" : "0"}` }}>
-        <StyledTypography sx={{ fontSize: "3.2rem" }}>
+        <StyledSubTitleTypography>
           <b>Coding Experience</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>
           I've spent the last year and half teaching myself how to code frontend
           applications. I accomplished this by completing multiple Udemy Courses
@@ -112,10 +162,17 @@ const AboutMeSection = () => {
         alt="circuit board"
         sx={{ opacity: `${fadeIn ? 1 : 0}` }}
       />
-      <TextContainer sx={{ opacity: `${fadeIn ? 1 : 0}`, gap: "0" }}>
-        <StyledTypography sx={{ fontSize: "3.2rem" }}>
+      <TextContainer
+        sx={{
+          opacity: `${fadeIn ? 1 : 0}`,
+          gap: "0",
+          display: "grid",
+          gridTemplateColumns: "100%",
+        }}
+      >
+        <StyledSubTitleTypography>
           <b>Continous Improvement Engineer</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>Job Duties Included:</StyledTypography>
         <StyledUnorderedList>
           <StyledListItem>
@@ -148,23 +205,23 @@ const AboutMeSection = () => {
   const renderReadyFunStuff = (
     <>
       <TextContainer sx={{ opacity: `${fadeIn ? 1 : 0}`, gap: "0" }}>
-        <StyledTypography sx={{ fontSize: "3.2rem" }}>
+        <StyledSubTitleTypography>
           <b>Avid Language Learner</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>
           I'm a constant learner who loves to learn about other cultures and
           languages. I am currently studying for the French Exam.
         </StyledTypography>
-        <StyledTypography sx={{ fontSize: "3.2rem", marginTop: "20px" }}>
+        <StyledSubTitleTypography sx={{ marginTop: "20px" }}>
           <b>Dungeons and Dragons DM</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>
           I'm a huge nerd, who loves to DM for anyone who wants to play. I've
           DMed the Strom Kings Thunder and Lost Mines of Phandelver
         </StyledTypography>
-        <StyledTypography sx={{ fontSize: "3.2rem", marginTop: "20px" }}>
+        <StyledSubTitleTypography sx={{ marginTop: "20px" }}>
           <b>Puzzle Dungeon</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>
           I'm currently working on creating a multi-user Dungeons and Dragons
           inspired puzzle application. That allows DMs and players to solve

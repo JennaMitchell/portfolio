@@ -4,6 +4,7 @@ import {
   StyledTypography,
   IconsContainer,
   StyledLink,
+  StyledSubTitleTypography,
 } from "./contact-styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -11,27 +12,45 @@ const ContactSection = () => {
   return (
     <MainContainer>
       <TextContainer>
-        <StyledTypography sx={{ fontSize: "3.8rem" }}>
+        <StyledSubTitleTypography>
           <b>Get in Touch</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>Send me an email or give me call!</StyledTypography>
         <IconsContainer>
           <StyledLink href={"https://github.com/JennaMitchell"}>
-            <GitHubIcon sx={{ width: "100%", height: "100%" }} />
+            <GitHubIcon
+              sx={{
+                width: "max(60px,60px)",
+                height: "max(60px,60px)",
+                "@media(max-width:1500px)": {
+                  height: "max(30px,30px)",
+                  width: "max(30px,30px)",
+                },
+              }}
+            />
           </StyledLink>
           <StyledLink href={"https://www.linkedin.com/in/jennaallisonmitchell"}>
-            <LinkedInIcon sx={{ width: "100%", height: "100%" }} />
+            <LinkedInIcon
+              sx={{
+                width: "max(60px,60px)",
+                height: "max(60px,60px)",
+                "@media(max-width:1500px)": {
+                  height: "max(30px,30px)",
+                  width: "max(30px,30px)",
+                },
+              }}
+            />
           </StyledLink>
         </IconsContainer>
       </TextContainer>
       <TextContainer>
-        <StyledTypography>
+        <StyledSubTitleTypography>
           <b>Call Me</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>1 (248) 520-3041</StyledTypography>
-        <StyledTypography>
+        <StyledSubTitleTypography>
           <b>Email</b>
-        </StyledTypography>
+        </StyledSubTitleTypography>
         <StyledTypography>jenna.allison.mitchell@gmail.com</StyledTypography>
       </TextContainer>
     </MainContainer>
