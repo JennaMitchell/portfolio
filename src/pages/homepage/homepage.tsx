@@ -14,11 +14,14 @@ import ProjectSection from "../projects/projects";
 import ContactSection from "../contact/contact-section";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import MenuContainer from "../../nav/menu-container";
+import { useMediaQuery } from "@mui/material";
 
 const Homepage = () => {
   const [initialLoad, setInitialLoad] = useState(false);
   const [menuButtonActive, setMenuActive] = useState(false);
   const [solidMenuButtonActive, setSolidMenuButtonActive] = useState(false);
+  const titleMenuButtonHoverEffectiveActive =
+    useMediaQuery("(max-width:940px)");
   useEffect(() => {
     setInitialLoad(true);
   }, []);
@@ -51,36 +54,38 @@ const Homepage = () => {
       // const titleHeightStart = titleYPosition - titleHeight;
 
       // handeling if the button is over the title text
-      if (
-        titleStartPosition > menuButtonBottomPosition &&
-        solidMenuButtonActive
-      ) {
-        setSolidMenuButtonActive(false);
-      }
+      if (titleMenuButtonHoverEffectiveActive) {
+        if (
+          titleStartPosition > menuButtonBottomPosition &&
+          solidMenuButtonActive
+        ) {
+          setSolidMenuButtonActive(false);
+        }
 
-      if (
-        titleStartPosition <= menuButtonBottomPosition &&
-        titleBottomPosition >= menuButtonBottomPosition &&
-        !solidMenuButtonActive
-      ) {
-        setSolidMenuButtonActive(true);
-      }
+        if (
+          titleStartPosition <= menuButtonBottomPosition &&
+          titleBottomPosition >= menuButtonBottomPosition &&
+          !solidMenuButtonActive
+        ) {
+          setSolidMenuButtonActive(true);
+        }
 
-      if (
-        contentContainerStartPosition > menuButtonBottomPosition &&
-        solidMenuButtonActive &&
-        titleBottomPosition < 0 + menuButtonBottomPosition / 2
-      ) {
-        setSolidMenuButtonActive(false);
-        console.log(false);
-      }
+        if (
+          contentContainerStartPosition > menuButtonBottomPosition &&
+          solidMenuButtonActive &&
+          titleBottomPosition < 0 + menuButtonBottomPosition / 2
+        ) {
+          setSolidMenuButtonActive(false);
+          console.log(false);
+        }
 
-      // using window.innerheihght since the title slide is 100vh so we don;t need to get's height
-      if (
-        contentContainerStartPosition <= menuButtonBottomPosition &&
-        !solidMenuButtonActive
-      ) {
-        setSolidMenuButtonActive(true);
+        // using window.innerheihght since the title slide is 100vh so we don;t need to get's height
+        if (
+          contentContainerStartPosition <= menuButtonBottomPosition &&
+          !solidMenuButtonActive
+        ) {
+          setSolidMenuButtonActive(true);
+        }
       }
     };
 
@@ -89,7 +94,7 @@ const Homepage = () => {
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, [solidMenuButtonActive]);
+  }, [solidMenuButtonActive, titleMenuButtonHoverEffectiveActive]);
 
   return (
     <>
