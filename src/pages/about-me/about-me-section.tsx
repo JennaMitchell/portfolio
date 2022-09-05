@@ -9,7 +9,7 @@ import {
   TextContainer,
   StyledTypography,
   SectionButtonsContainer,
-  ActiveSectionButton,
+  SelectionButton,
   StyledUnorderedList,
   StyledListItem,
   StyledSubTitleTypography,
@@ -27,7 +27,7 @@ const AboutMeSection = () => {
     ["Fun", "Stuff"],
   ];
   const stackButtonsActive = useMediaQuery("(max-width:700px)");
-  const [activeSectionButton, setActiveSectionButton] =
+  const [activeSelectionButton, setActiveSelectionButton] =
     useState("Coding Experience");
 
   const [nextActiveButton, setNextActiveButton] = useState("");
@@ -36,9 +36,9 @@ const AboutMeSection = () => {
   useEffect(() => {
     if (!fadeIn && previousActiveButton.length === 0) {
       setTimeout(() => {
-        setActiveSectionButton(nextActiveButton);
+        setActiveSelectionButton(nextActiveButton);
         setNextActiveButton("");
-        setPreviousActiveButton(activeSectionButton);
+        setPreviousActiveButton(activeSelectionButton);
       }, 500);
 
       // waiting 1s for the fade out animation to play
@@ -49,12 +49,7 @@ const AboutMeSection = () => {
       setPreviousActiveButton("");
       setFadeIn(true);
     }
-  }, [
-    fadeIn,
-    activeSectionButton,
-    nextActiveButton,
-    previousActiveButton.length,
-  ]);
+  }, [fadeIn, SelectionButton, nextActiveButton, previousActiveButton.length]);
 
   let renderReadySectionButtons: any[] = [];
   if (!stackButtonsActive) {
@@ -64,25 +59,26 @@ const AboutMeSection = () => {
         setFadeIn(false);
       };
 
-      if (title === activeSectionButton) {
+      if (title === activeSelectionButton) {
         return (
-          <ActiveSectionButton key={title}>
+          <SelectionButton
+            key={title}
+            sx={{
+              backgroundColor: "transparent",
+              textDecoration: "underline",
+              boxShadow: "none",
+              color: "secondary.dark",
+            }}
+          >
             &nbsp; {title} &nbsp;
-          </ActiveSectionButton>
+          </SelectionButton>
         );
       } else {
         return (
-          <ActiveSectionButton
-            key={title}
-            sx={{
-              textDecoration: "none",
-              "&:hover": { textDecoration: "underline" },
-            }}
-            onClick={buttonHandler}
-          >
+          <SelectionButton key={title} onClick={buttonHandler}>
             &nbsp;
             {title}&nbsp;
-          </ActiveSectionButton>
+          </SelectionButton>
         );
       }
     });
@@ -98,24 +94,28 @@ const AboutMeSection = () => {
             <StackedTitleTypography>&nbsp;{word}&nbsp;</StackedTitleTypography>
           );
         });
-        if (sectionButtonTitles[index] === activeSectionButton) {
+        if (sectionButtonTitles[index] === activeSelectionButton) {
           return (
-            <ActiveSectionButton key={sectionButtonTitles[index]}>
+            <SelectionButton
+              key={sectionButtonTitles[index]}
+              sx={{
+                backgroundColor: "transparent",
+                textDecoration: "underline",
+                boxShadow: "none",
+                color: "secondary.dark",
+              }}
+            >
               {renderReadyWordStack}
-            </ActiveSectionButton>
+            </SelectionButton>
           );
         } else {
           return (
-            <ActiveSectionButton
+            <SelectionButton
               key={sectionButtonTitles[index]}
-              sx={{
-                textDecoration: "none",
-                "&:hover": { textDecoration: "underline" },
-              }}
               onClick={buttonHandler}
             >
               {renderReadyWordStack}
-            </ActiveSectionButton>
+            </SelectionButton>
           );
         }
       }
@@ -240,16 +240,16 @@ const AboutMeSection = () => {
     <MainContainer
       sx={{
         gridTemplateColumns: `${
-          activeSectionButton === "Job Experience" ? "1fr 2fr" : "2fr 1fr"
+          activeSelectionButton === "Job Experience" ? "1fr 2fr" : "2fr 1fr"
         } `,
       }}
     >
       <SectionButtonsContainer>
         {renderReadySectionButtons}
       </SectionButtonsContainer>
-      {activeSectionButton === "Coding Experience" && renderReadyCodingBlock}
-      {activeSectionButton === "Job Experience" && renderReadyJobExperience}
-      {activeSectionButton === "Fun Stuff" && renderReadyFunStuff}
+      {activeSelectionButton === "Coding Experience" && renderReadyCodingBlock}
+      {activeSelectionButton === "Job Experience" && renderReadyJobExperience}
+      {activeSelectionButton === "Fun Stuff" && renderReadyFunStuff}
     </MainContainer>
   );
 };

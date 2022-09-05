@@ -5,19 +5,17 @@ const MainContainer = styled("div", {
 })(({ theme }) => ({
   width: "max(100%,100%)",
   height: "max-content",
-
   position: "relative",
-
   color: theme.palette.secondary.light,
   fontSize: "4.8rem",
   backgroundColor: "transparent",
-
   display: "grid",
   gridTemplateColumns: "max-content max-content",
   gridTemplateRows: "max-content max-content",
   alignItems: "center",
   justifyContent: "center",
   justifySelf: "center",
+  gap: "20px",
 }));
 
 const ImageContainer = styled("img", {
@@ -127,24 +125,32 @@ const SectionButtonsContainer = styled("div", {
   gridRow: "1/span 1",
   marginBottom: "20px",
 }));
-const ActiveSectionButton = styled("button", {
+const SelectionButton = styled("button", {
   slot: "Wrapper",
-  name: "ActiveSectionButton",
+  name: "SelectionButton",
 })(({ theme }) => ({
-  minWidth: "100%",
-  width: "100%",
-  maxWidth: "100%",
+  minWidth: "max-content",
+  width: "max-content",
+  maxWidth: "max-content",
   minHeight: "max-content",
   height: "max-content",
   maxHeight: "max-content",
-  color: theme.palette.secondary.dark,
+  color: theme.palette.secondary.light,
+  padding: "10px 20px",
+  borderRadius: "10px",
+  boxShadow: " 0 0 10px black",
 
-  backgroundColor: "transparent",
-  textDecoration: "underline",
+  backgroundColor: theme.palette.primary.main,
+
   transition: "all 1s",
   fontSize: "2.6rem",
   border: "none",
   textAlign: "center",
+  marginBottom: "20px",
+  marginTop: "20px",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.light,
+  },
   "@media(max-width:1500px)": {
     fontSize: "2.2rem",
   },
@@ -220,7 +226,7 @@ export {
   TextContainer,
   StyledTypography,
   SectionButtonsContainer,
-  ActiveSectionButton,
+  SelectionButton,
   StyledUnorderedList,
   StyledListItem,
   StyledSubTitleTypography,

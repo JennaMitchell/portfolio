@@ -76,7 +76,22 @@ const Homepage = () => {
           titleBottomPosition < 0 + menuButtonBottomPosition / 2
         ) {
           setSolidMenuButtonActive(false);
-          console.log(false);
+        }
+
+        // using window.innerheihght since the title slide is 100vh so we don;t need to get's height
+        if (
+          contentContainerStartPosition <= menuButtonBottomPosition &&
+          !solidMenuButtonActive
+        ) {
+          setSolidMenuButtonActive(true);
+        }
+      } else {
+        if (
+          contentContainerStartPosition > menuButtonBottomPosition &&
+          solidMenuButtonActive &&
+          titleBottomPosition < 0 + menuButtonBottomPosition / 2
+        ) {
+          setSolidMenuButtonActive(false);
         }
 
         // using window.innerheihght since the title slide is 100vh so we don;t need to get's height

@@ -159,7 +159,7 @@ const ContentContainer = styled("div", {
   boxSizing: "border-box",
 
   marginBottom: "40px",
-  gap: "30px",
+  gap: "100px",
   "@media(max-width:1550px)": {
     minWidth: "90vw",
     width: "90vw",

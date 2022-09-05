@@ -9,6 +9,7 @@ import {
   DownArrow,
   StyledSubTitleTypography,
 } from "./projects-styled-components";
+import "./projects.css";
 
 import bar from "../../assets/images/bar.jpg";
 import kanji from "../../assets/images/kanji.jpg";
@@ -41,10 +42,21 @@ const ProjectSection = () => {
   const kanji2GoPhotoClickHandler = () => {
     setActiveProject("kanji2Go");
   };
+  const [textContainerMouseOverActive, setTextContainerMouseOverActive] =
+    useState(false);
+  const textContainerMouseEnterHandler = () => {
+    setTextContainerMouseOverActive(true);
+  };
+  const textContainerMouseLeaveHandler = () => {
+    setTextContainerMouseOverActive(false);
+  };
 
   return (
     <MainContainer>
-      <TextContainer>
+      <TextContainer
+        onMouseEnter={textContainerMouseEnterHandler}
+        onMouseLeave={textContainerMouseLeaveHandler}
+      >
         <StyledSubTitleTypography>
           <b>{projectsData[activeProject].name}</b>
         </StyledSubTitleTypography>
@@ -78,6 +90,11 @@ const ProjectSection = () => {
             "@media(max-width:800px)": { right: "7.5%" },
             "@media(max-width:700px)": { right: "2.5%" },
           }}
+          className={`${
+            textContainerMouseOverActive &&
+            activeProject === "frenchQuiz" &&
+            "hoverTrigger"
+          }`}
           onMouseEnter={redDragonPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}
           onClick={redDragonPhotoClickHandler}
@@ -104,6 +121,11 @@ const ProjectSection = () => {
           onMouseEnter={frenchQuizPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}
           onClick={frenchQuizPhotoClickHandler}
+          className={`${
+            textContainerMouseOverActive &&
+            activeProject === "frenchQuiz" &&
+            "hoverTrigger"
+          }`}
         >
           <CustomTooltip
             sx={{
@@ -129,6 +151,11 @@ const ProjectSection = () => {
           onMouseEnter={kanji2GoPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}
           onClick={kanji2GoPhotoClickHandler}
+          className={`${
+            textContainerMouseOverActive &&
+            activeProject === "kanji2Go" &&
+            "hoverTrigger"
+          }`}
         >
           <CustomTooltip
             sx={{
