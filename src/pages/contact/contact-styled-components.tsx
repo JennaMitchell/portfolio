@@ -16,6 +16,10 @@ const MainContainer = styled("div", {
   justifyContent: "center",
   justifySelf: "center",
   marginBottom: "40px",
+  "@media(max-width:800px)": {
+    gridTemplateColumns: "max-content",
+    gridTemplateRows: "1fr 1fr",
+  },
 }));
 
 const TextContainer = styled("div", {
@@ -38,6 +42,9 @@ const TextContainer = styled("div", {
   alignSelf: "center",
   "@media(max-width:820px)": {
     fontSize: "1.2rem",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "0.8rem",
   },
 }));
 
@@ -70,6 +77,10 @@ const IconsContainer = styled("div", {
     gridTemplateColumns: "repeat(2,30px)",
     gap: "15px",
   },
+  "@media(max-width:400px)": {
+    height: "max(20px,20px)",
+    gridTemplateColumns: "repeat(2,20px)",
+  },
 }));
 
 const StyledLink = styled("a", {
@@ -100,6 +111,9 @@ const StyledSubTitleTypography = styled(Typography, {
   },
   "@media(max-width:820px)": {
     fontSize: "1.8rem",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "1.2rem",
   },
 }));
 

@@ -49,7 +49,12 @@ const AboutMeSection = () => {
       setPreviousActiveButton("");
       setFadeIn(true);
     }
-  }, [fadeIn, SelectionButton, nextActiveButton, previousActiveButton.length]);
+  }, [
+    fadeIn,
+    nextActiveButton,
+    previousActiveButton.length,
+    activeSelectionButton,
+  ]);
 
   let renderReadySectionButtons: any[] = [];
   if (!stackButtonsActive) {
@@ -62,12 +67,15 @@ const AboutMeSection = () => {
       if (title === activeSelectionButton) {
         return (
           <SelectionButton
-            key={title}
+            key={`${title}`}
             sx={{
               backgroundColor: "transparent",
               textDecoration: "underline",
               boxShadow: "none",
               color: "secondary.dark",
+              "&:hover": {
+                backgroundColor: "inherit",
+              },
             }}
           >
             &nbsp; {title} &nbsp;
@@ -75,7 +83,7 @@ const AboutMeSection = () => {
         );
       } else {
         return (
-          <SelectionButton key={title} onClick={buttonHandler}>
+          <SelectionButton key={`${title}`} onClick={buttonHandler}>
             &nbsp;
             {title}&nbsp;
           </SelectionButton>
@@ -97,12 +105,15 @@ const AboutMeSection = () => {
         if (sectionButtonTitles[index] === activeSelectionButton) {
           return (
             <SelectionButton
-              key={sectionButtonTitles[index]}
+              key={`${sectionButtonTitles[index]} stacked`}
               sx={{
                 backgroundColor: "transparent",
                 textDecoration: "underline",
                 boxShadow: "none",
-                color: "secondary.dark",
+                color: "black",
+                "&:hover": {
+                  backgroundColor: "inherit",
+                },
               }}
             >
               {renderReadyWordStack}
@@ -111,8 +122,9 @@ const AboutMeSection = () => {
         } else {
           return (
             <SelectionButton
-              key={sectionButtonTitles[index]}
+              key={`${sectionButtonTitles[index]} stacked`}
               onClick={buttonHandler}
+              sx={{ color: "white" }}
             >
               {renderReadyWordStack}
             </SelectionButton>

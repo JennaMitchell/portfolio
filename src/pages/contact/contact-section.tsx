@@ -26,6 +26,10 @@ const ContactSection = () => {
                   height: "max(30px,30px)",
                   width: "max(30px,30px)",
                 },
+                "@media(max-width:400px)": {
+                  height: "max(20px,20px)",
+                  width: "max(20px,20px)",
+                },
               }}
             />
           </StyledLink>
@@ -37,6 +41,10 @@ const ContactSection = () => {
                 "@media(max-width:1500px)": {
                   height: "max(30px,30px)",
                   width: "max(30px,30px)",
+                },
+                "@media(max-width:400px)": {
+                  height: "max(20px,20px)",
+                  width: "max(20px,20px)",
                 },
               }}
             />

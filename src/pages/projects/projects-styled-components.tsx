@@ -52,8 +52,8 @@ const ImageContainer = styled("div", {
     height: "max(150px,150px)",
   },
   "@media(max-width:400px)": {
-    width: "max(125px,125px)",
-    height: "max(125px,125px)",
+    width: "max(100px,100px)",
+    height: "max(100px,100px)",
   },
 }));
 
@@ -74,12 +74,21 @@ const TextContainer = styled("div", {
   flexDirection: "column",
   borderSizing: "border-box",
 
-  alignSelf: "center",
+  justifySelf: "center",
   "@media(max-width:1500px)": {
     fontSize: "1.6rem",
   },
   "@media(max-width:820px)": {
     fontSize: "1.2rem",
+  },
+  "@media(max-width:650px)": {
+    width: "max(70ch,70ch)",
+  },
+  "@media(max-width:550px)": {
+    width: "max(50ch,50ch)",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "0.8rem",
   },
 }));
 
@@ -135,8 +144,12 @@ const ImageStackContainer = styled("div", {
   "@media(max-width:650px)": {
     height: "max(350px,350px)",
   },
-  "@media(max-width:400px)": {
+  "@media(max-width:550px)": {
+    marginTop: "20px",
     height: "max(300px,300px)",
+  },
+  "@media(max-width:400px)": {
+    height: "max(230px,230px)",
   },
 }));
 
@@ -193,6 +206,9 @@ const StyledSubTitleTypography = styled(Typography, {
   },
   "@media(max-width:820px)": {
     fontSize: "1.8rem",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "1.2rem",
   },
 }));
 export {

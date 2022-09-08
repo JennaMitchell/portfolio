@@ -62,6 +62,7 @@ const TextContainer = styled("div", {
   borderRadius: "50%",
   display: "flex",
   flexDirection: "column",
+  justifySelf: "center",
 
   alignSelf: "center",
   marginTop: "0px",
@@ -74,6 +75,13 @@ const TextContainer = styled("div", {
   },
   "@media(max-width:650px)": {
     gridColumn: "1/span 2",
+    width: "max(70ch,70ch)",
+  },
+  "@media(max-width:550px)": {
+    width: "max(50ch,50ch)",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "0.8rem",
   },
 }));
 
@@ -104,6 +112,10 @@ const StyledSubTitleTypography = styled(Typography, {
   "@media(max-width:500px)": {
     fontSize: "1.6rem",
   },
+  "@media(max-width:400px)": {
+    fontSize: "1.2rem",
+    lineHeight: "1.2rem",
+  },
 }));
 
 const SectionButtonsContainer = styled("div", {
@@ -112,7 +124,7 @@ const SectionButtonsContainer = styled("div", {
 })(({ theme }) => ({
   width: "max(100%,100%)",
   height: "max(40px,40px)",
-  color: theme.palette.secondary.dark,
+
   fontSize: "inherit",
   display: "grid",
   gridTemplateColumns: "repeat(3,1fr)",
@@ -164,12 +176,18 @@ const SelectionButton = styled("button", {
     display: "grid",
     justifyItems: "center",
     alignItems: "center",
+    autoFlowRows: "max-content",
   },
-  "@media(max-width:640px)": {
+  "@media(max-width:680px)": {
     width: "max(100px,100px)",
   },
-  "@media(max-width:380px)": {
+  "@media(max-width:540px)": {
     width: "max(90px,90px)",
+  },
+  "@media(max-width:430px)": {
+    padding: "5px 10px",
+    fontSize: "1rem",
+    lineHeight: "1rem",
   },
 }));
 
@@ -214,9 +232,18 @@ const StackedTitleTypography = styled(Typography, {
   maxHeight: "max-content",
   textDecoration: "inherit",
   fontSize: "1.6rem",
-  color: theme.palette.secondary.dark,
+  color: "inherit",
   "@media(max-width:500px)": {
     fontSize: "1.4rem",
+  },
+  "@media(max-width:480px)": {
+    padding: "5px 10px",
+    fontSize: "1.2rem",
+    lineHeight: "1.2rem",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "0.8rem",
+    lineHeight: "0.8rem",
   },
 }));
 

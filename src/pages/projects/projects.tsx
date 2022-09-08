@@ -9,7 +9,7 @@ import {
   DownArrow,
   StyledSubTitleTypography,
 } from "./projects-styled-components";
-import "./projects.css";
+import classes from "./projects.module.css";
 
 import bar from "../../assets/images/bar.jpg";
 import kanji from "../../assets/images/kanji.jpg";
@@ -20,6 +20,8 @@ import { projectsData } from "./project-data";
 const ProjectSection = () => {
   const [activeProject, setActiveProject] = useState("redDragonPizzeria");
   const [hoveredPhoto, setHoveredPhoto] = useState("");
+  const [textContainerMouseOverActive, setTextContainerMouseOverActive] =
+    useState<string>("");
 
   const redDragonPhotoCursorInHandler = () => {
     setHoveredPhoto("redDragonPizzeria");
@@ -42,13 +44,12 @@ const ProjectSection = () => {
   const kanji2GoPhotoClickHandler = () => {
     setActiveProject("kanji2Go");
   };
-  const [textContainerMouseOverActive, setTextContainerMouseOverActive] =
-    useState(false);
+
   const textContainerMouseEnterHandler = () => {
-    setTextContainerMouseOverActive(true);
+    setTextContainerMouseOverActive(activeProject);
   };
   const textContainerMouseLeaveHandler = () => {
-    setTextContainerMouseOverActive(false);
+    setTextContainerMouseOverActive("");
   };
 
   return (
@@ -91,8 +92,7 @@ const ProjectSection = () => {
             "@media(max-width:700px)": { right: "2.5%" },
           }}
           className={`${
-            textContainerMouseOverActive &&
-            activeProject === "frenchQuiz" &&
+            textContainerMouseOverActive === "redDragonPizzeria" &&
             "hoverTrigger"
           }`}
           onMouseEnter={redDragonPhotoCursorInHandler}
@@ -117,14 +117,16 @@ const ProjectSection = () => {
             scale: `${activeProject === "frenchQuiz" && 1.25}`,
             zIndex: `${activeProject === "frenchQuiz" && 2}`,
             border: `${activeProject === "frenchQuiz" && "4px solid red"}`,
+            "@media(max-width:400px)": {
+              top: "100px",
+            },
           }}
           onMouseEnter={frenchQuizPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}
           onClick={frenchQuizPhotoClickHandler}
           className={`${
-            textContainerMouseOverActive &&
-            activeProject === "frenchQuiz" &&
-            "hoverTrigger"
+            textContainerMouseOverActive === "frenchQuiz" &&
+            classes.hoverTrigger
           }`}
         >
           <CustomTooltip
@@ -151,11 +153,7 @@ const ProjectSection = () => {
           onMouseEnter={kanji2GoPhotoCursorInHandler}
           onMouseOut={photoCursorOutHandler}
           onClick={kanji2GoPhotoClickHandler}
-          className={`${
-            textContainerMouseOverActive &&
-            activeProject === "kanji2Go" &&
-            "hoverTrigger"
-          }`}
+          className={`${textContainerMouseOverActive === "kanji2Go"}`}
         >
           <CustomTooltip
             sx={{

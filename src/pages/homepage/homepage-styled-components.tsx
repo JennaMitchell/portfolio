@@ -165,10 +165,18 @@ const ContentContainer = styled("div", {
     width: "90vw",
     maxWidth: "90vw",
   },
+  "@media(max-width:820px)": {
+    gap: "40px",
+  },
+
   "@media(max-width:500px)": {
     padding: "10px",
     marginLeft: "0px",
     marginRight: "12.5px",
+    gap: "20px",
+  },
+  "@media(max-width:400px)": {
+    fontSize: "0.8rem",
   },
 }));
 
